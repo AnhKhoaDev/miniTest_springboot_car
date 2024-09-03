@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Car</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Delete Car</h1>
+    <p>
+        <a href="/books" class="btn btn-secondary">Car list</a>
+    </p>
+    <form th:action="@{/cars/delete}" th:object="${car}" method="post">
+        <input type="hidden" name="id" th:field="*{id}"/>
+        <table class="table table-bordered">
+            <tr>
+                <td><strong>Code:</strong></td>
+                <td th:text="${car.code}"></td>
+            </tr>
+            <tr>
+                <td><strong>Name:</strong></td>
+                <td th:text="${car.name}"></td>
+            </tr>
+            <tr>
+                <td><strong>Producer:</strong></td>
+                <td th:text="${car.producer}"></td>
+            </tr>
+            <tr>
+                <td><strong>Price:</strong></td>
+                <td th:text="${car.price}"></td>
+            </tr>
+            <tr>
+                <td><strong>Description:</strong></td>
+                <td th:text="${car.description}"></td>
+            </tr>
+            <tr>
+                <td><strong>Manufacturer:</strong></td>
+                <td th:text="${car.manufacturer.name}"></td>
+            </tr>
+            <tr>
+                <td><strong>Image:</strong></td>
+                <td><img width="100" height="100" th:src="@{'/i/'+${car.img}}" alt="Car Image"></td>
+            </tr>
+        </table>
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+</div>
+</body>
+</html>
